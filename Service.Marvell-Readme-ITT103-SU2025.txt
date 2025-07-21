@@ -1,0 +1,40 @@
+
+Author: 			Marvell Service
+
+Date Created: 			July 20, 2025
+
+Course: 			ITT103 Programming Techniques
+
+GitHub Public URL to Code: 	https://github.com/Armour-of-God/Python/blob/925e3be419d6bea44e8ddbc1540e58b7e69ff1d1/Hospital%20Management%20System.py
+
+
+The purpose of the program:
+
+The Hospital Management Systems (HMS) is a python software platform designed to modernize operations, improve data accuracy, and minimize administrative workload and streamline its process. The system allows maximum efficiency in the registration of patients, doctors, scheduling, cancellation of appointments, and automate the billing process for patients. The HMSs enable hospitals to offer better care and reduce wait times.
+
+
+How to execute the Program:
+
+	1. Download and install PyCharm 3.13 or higher on your device.
+	2. Save the file with .py extension for Python (Hospital Management System program).
+	3. Open the PyCharm software or command prompt console.
+	4. Locate the folder containing the .py file.
+	5. Select the file to run in the program.
+	6. Click run to launch the program in the console.
+	7. Navigate through the options from the menu interface.
+
+
+Required Modifications: (If any)
+
+	1. The application can be modified to capture and store new data based on request.
+	2. The data fields may be altered to meet specific needs.
+	3. An SQL database may be added to store and retrieve data for long term use.
+
+
+Assumptions or Limitations:
+
+	1. All ID’s generated are assumed to be unique through the auto-generation used in the software.
+	2. Auto generated IDs are limited to a five (5) digit combination. Example Patient = P21574.
+	3. All information and ID generated are volatile.
+	4. All services fee must be entered manually, with the exception for the consultation fee being constant.
+	5. The data stored by the application is limited based on the amount of RAM (Random Access Memory) installed in your device.
