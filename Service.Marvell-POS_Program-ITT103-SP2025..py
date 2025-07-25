@@ -24,8 +24,8 @@ def is_valid_date(date_str):
         return False
 
 # This function checks for the validity of time input types
-def is_valid_time(time_str):
-    return bool(re.match(r"^(0[1-9]|1[0-2]):[0-5][0-9] (AM|PM)$", time_str))
+def is_valid_time(t):
+    return bool(re.match(r"^(0?[1-9]|1[0-2]):[0-5][0-9]\s? (AM|PM)$", t))
 
 # This function checks if a given date and time is available in the schedule
 def is_the_available(schedule, date, time):
@@ -274,21 +274,28 @@ def main():
         elif option == "3":
             pid = input("Enter Patient ID: ").strip()
             did = input("Enter Doctor ID: ").strip()
-            date = input(" Date (mm/dd/yyyy: ").strip()
+
+            date_str = input("Date (mm/dd/yyyy: ").strip()
             time = input("Time (HH:MM AM/PM): ").strip()
-            if not is_valid_date(date):
+            if not is_valid_date(date_str):
                 print("Invalid date format MM/DD/YYYY")
                 continue
-            time = input("Time (HH:MM AM/PM): ").strip()
-            if not is_valid_time(time):
+
+            time_str = input("Time (HH:MM AM/PM): ").strip()
+            if not is_valid_time(time_str):
                 print("Invalid time format HH:MM AM/PM")
                 continue
-            hospital.book_appointment(pid, did, date, time)
+
+            hospital.book_appointment(pid, did, date_str, time_str)  # displaying the appointment booked successfully message
 
         # Cancelling an Appointment
         elif option == "4":
             appointment_id = input("Enter Appointment ID to cancel: ").strip()
-            hospital.cancel_appointment(appointment_id)
+            confirm = input("Are you sure you want to cancel this appointment? (yes/no): ").strip().lower()
+            if confirm == "yes":
+                hospital.cancel_appointment(appointment_id)
+            else:
+                print("Cancellation aborted or rescheduled")
 
         # View Patient Profile
         elif option == "5":
