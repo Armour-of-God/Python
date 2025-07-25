@@ -1,8 +1,31 @@
 # Hospital Management System / # Course: ITT103 - Programming Techniques
 #============================================================
 
-#importing necessary libraries
+#importing the necessary libraries
 import random
+
+import re
+from datetime import datetime
+
+# This function checks for the validity of names
+def is_valid_name(name):
+    return bool(name) and name.replace(" ", "").isalpha()
+
+# This function checks for the validity of gender input types
+def is_valid_gender(gender):
+    return gender.lower() in ['male', 'female', 'm', 'f', 'others']
+
+# This function checks for the validity of date input types
+def is_valid_date(date_str):
+    try:
+        datetime.strptime(date_str, "%m/%d/%Y")
+        return True
+    except ValueError:
+        return False
+
+# This function checks for the validity of time input types
+def is_valid_time(time_str):
+    return bool(re.match(r"^(0[1-9]|1[0-2]):[0-5][0-9] (AM|PM)$", time_str))
 
 # This function checks if a given date and time is available in the schedule
 def is_the_available(schedule, date, time):
@@ -158,7 +181,7 @@ class Hospital_Management_System_Interface_Setup:
         if appointment:
             appointment.cancel()
         else:
-            print("This appointment does not exist. Please check the appointment ID and try again.") # error message displayed, if the appointment does not exist
+            print("This appointment does not exist. Please check the appointment ID and try again.") # error message displays, if the appointment does not exist
 
 
     def generate_bill(self, appointment_id): # generating a bill for the appointment
@@ -220,16 +243,31 @@ def main():
         # New Patient Registration
         if option == "1":
             name = input("Patient Name: ").strip()
+            if not is_valid_name(name):
+                print("Invalid name. Only letters and spaces allowed.")
+                continue
             age = input("Patient Age: ").strip()
             gender = input("Patient Gender (Male/Female/Others): ").strip()
+            if not is_valid_gender(gender):
+                print("Invalid gender. Please enter Male, Female, or Others.")
+                continue
             hospital.add_patient(name, age, gender)
 
         # New Doctor Registration
         elif option == "2":
             name = input("Doctor Name: ").strip()
+            if not is_valid_name(name):
+                print("Invalid name. Only letters and spaces allowed.")
+                continue
             age = input("Doctor Age: ").strip()
             gender = input("Doctor Gender (Male/Female/Others): ").strip()
+            if not is_valid_gender(gender):
+                print("Invalid gender. Please enter Male, Female, or Others.")
+                continue
             speciality = input("Doctor Speciality: ").strip()
+            if not speciality:
+                print("Speciality cannot be empty.")
+                continue
             hospital.add_doctor(name, age, gender, speciality)
 
         # Book Appointment
@@ -238,6 +276,13 @@ def main():
             did = input("Enter Doctor ID: ").strip()
             date = input(" Date (mm/dd/yyyy: ").strip()
             time = input("Time (HH:MM AM/PM): ").strip()
+            if not is_valid_date(date):
+                print("Invalid date format MM/DD/YYYY")
+                continue
+            time = input("Time (HH:MM AM/PM): ").strip()
+            if not is_valid_time(time):
+                print("Invalid time format HH:MM AM/PM")
+                continue
             hospital.book_appointment(pid, did, date, time)
 
         # Cancelling an Appointment
