@@ -322,6 +322,9 @@ def main():
         # Exit the program
         elif option == "8":
             print("Thank you for using the Marvell Service Hospital Management System. Goodbye!")
+            print()
+            print(">>>>>>> I CERTIFY THAT I HAVE NOT GIVEN OR RECEIVED ANY UNAUTHORIZED ASSISTANCE ON THIS ASSIGNMENT <<<<<<<") #This is a statement to certify that the work is original and not plagiarized
+            print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> M. Service <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
 
             break
 
