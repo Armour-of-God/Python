@@ -275,13 +275,12 @@ def main():
             pid = input("Enter Patient ID: ").strip()
             did = input("Enter Doctor ID: ").strip()
 
-            date_str = input("Date (mm/dd/yyyy: ").strip()
-            time = input("Time (HH:MM AM/PM): ").strip()
+            date_str = input("Date (mm/dd/yyyy: ").strip() # validating the date input from the user
             if not is_valid_date(date_str):
                 print("Invalid date format MM/DD/YYYY")
                 continue
 
-            time_str = input("Time (HH:MM AM/PM): ").strip()
+            time_str = input("Time (HH:MM AM/PM): ").strip() # validating the time input from the user
             if not is_valid_time(time_str):
                 print("Invalid time format HH:MM AM/PM")
                 continue
@@ -295,7 +294,7 @@ def main():
             if confirm == "yes":
                 hospital.cancel_appointment(appointment_id)
             else:
-                print("Cancellation aborted or rescheduled")
+                print("Appointment cancelled")
 
         # View Patient Profile
         elif option == "5":
